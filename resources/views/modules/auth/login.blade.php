@@ -26,28 +26,39 @@
                     <p class="text-center small">Ingrese tu Email & contraseña para iniciar sesión</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
-
+                  <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('logear') }}">
+                   @csrf
                     <div class="col-12">
                       <label for="email" class="form-label">Email</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="email" required>
+                        <input type="text" name="email" class="form-control" id="email" required>
                         <div class="invalid-feedback">Por favor ingrese su Email.</div>
                       </div>
                     </div>
-
                     <div class="col-12">
                       <label for="password" class="form-label">Contraseña</label>
                       <input type="password" name="password" class="form-control" id="password" required>
                       <div class="invalid-feedback">Por favor insegre su contraseña!</div>
                     </div>
-
-
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Entrar</button>
                     </div>
                   </form>
+                  <!--Validacion de errores en el formulario-->
+                    <div>
+                    @if ($errors->any()) 
+                    <p>
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                        @endforeach
+
+                      </ul>
+                    </p>
+
+                    @endIf
+                    </div>
 
                 </div>
               </div>
