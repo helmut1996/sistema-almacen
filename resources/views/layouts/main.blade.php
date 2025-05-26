@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>@yield('titulo')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,6 +29,7 @@
   <!-- Template Main CSS File -->
   <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -45,6 +46,7 @@
   
   @include('shared.footer')
 
+  @yield('contenido')
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -54,12 +56,22 @@
   <script src="{{ asset('NiceAdmin/assets/vendor/chart.js/chart.umd.js') }}"></script>
   <script src="{{ asset('NiceAdmin/assets/vendor/echarts/echarts.min.js') }}"></script>
   <script src="{{ asset('NiceAdmin/assets/vendor/quill/quill.js') }}"></script>
-  <script src="{{ asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js') }}t"></script>
+ <script src="{{ asset('NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
   <script src="{{ asset('NiceAdmin/assets/vendor/tinymce/tinymce.min.js') }}"></script>
   <script src="{{ asset('NiceAdmin/assets/vendor/php-email-form/validate.js') }}"></script>
 
   <!-- Template Main JS File -->
   <script src="{{ asset('NiceAdmin/assets/js/main.js') }}"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const datatables = document.querySelectorAll('.datatable');
+    datatables.forEach(function (datatable) {
+      new simpleDatatables.DataTable(datatable);
+    });
+  });
+</script>
+
+
 
 </body>
 

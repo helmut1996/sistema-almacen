@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Categorias extends Controller
 {
 
     public function index(){
-        return view('modules.categorias.index');
+        $titulo = 'AdministrarCategorias';
+        $items = Categoria::all();
+        return view('modules.categorias.index', compact("titulo", "items"));
     }
         /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $titulo = 'Crear Categoria';
+        return view('modules.categorias.create', compact("titulo"));
     }
 
     /**
@@ -23,7 +28,11 @@ class Categorias extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item = new Categoria();
+        $item->id_users = Auth::user()->id;
+        $item->nombre = $request->nombre;
+        $item->save();
+        return redirect()->route('categorias');
     }
 
     /**
